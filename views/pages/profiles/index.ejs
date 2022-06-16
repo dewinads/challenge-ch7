@@ -1,0 +1,49 @@
+<div class="d-flex justify-content-between align-items-center">
+    <a class="btn btn-primary" href="/profiles/create" role="button">
+      <i class="bi-plus-lg"></i> Create New Profile
+    </a>
+  </div>
+  
+  <div class="table-responsive mt-3">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Full Name</th>
+          <th scope="col">Address</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Phone Number</th>
+          <th scope="col">User Game</th>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% profiles.forEach((profile, index) => { %>
+          <tr>
+            <th scope="row"><%= index + 1 %></th>
+            <td class="w-100"><%= profile.fullName %></td>
+            <td class="w-100"><%= profile.address %></td>
+            <td class="w-100"><%= profile.gender %></td>
+            <td class="w-100"><%= profile.phoneNumber %></td>
+            <td class="w-100"><%= profile.user.username %></td>
+            <td>
+              <div class="d-flex gap-2 text-nowrap">
+                <a class="btn btn-success btn-sm" href="/profiles/<%= profile.id %>" role="button">
+                  <i class="bi-eye-fill"></i> Lihat Detail
+                </a>
+                <a class="btn btn-primary btn-sm" href="/profiles/<%= profile.id %>/edit" role="button">
+                  <i class="bi-pencil-fill"></i> Edit
+                </a>
+                
+                <form method="post" action="/profiles/<%= profile.id %>?_method=DELETE">
+                  <button class="btn btn-danger btn-sm" type="submit">
+                    <i class="bi-trash-fill"></i> Hapus
+                  </button>
+                </form>
+              </div>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>

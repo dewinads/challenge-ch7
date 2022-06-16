@@ -1,0 +1,38 @@
+<form method="post" action="/profiles">
+  <div class="mb-3">
+    <label for="fullName" class="form-label">Nama Lengkap</label>
+    <input type="text" class="form-control" name="fullName" id="fullName" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="address" class="form-label">Alamat</label>
+    <input type="text" class="form-control" id="address" name="address">
+  </div>
+
+  <div class="mb-3">
+    <label for="gender" class="form-label">Jenis Kelamin</label>
+    <input type="text" class="form-control" id="gender" name="gender">
+  </div>
+
+  <div class="mb-3">
+    <label for="phoneNumber" class="form-label">No. Handphone</label>
+    <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber">
+  </div>
+
+  <div class="mb-4">
+    <label for="user" class="form-label">User Game</label>
+    <select class="form-select" aria-label="User" name="userId" required>
+        <option selected disabled value="">-- Pilih --</option>
+        <% users.forEach((user) => { %>
+        <option value="<%= user.id %>">
+        <%= user.username %>
+        </option>
+        <% )} %>
+    </select>
+  </div>
+
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>
